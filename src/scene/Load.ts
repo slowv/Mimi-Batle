@@ -16,6 +16,9 @@ export class Load extends Scene {
     particles!: ParticleEmitterManager;
     emitter!: ParticleEmitter;
     mouse!: Phaser.Input.Pointer;
+    backEmit!: ParticleEmitter;
+    midEmit!: ParticleEmitter;
+    frontEmit!: ParticleEmitter;
 
     constructor() {
         super({
@@ -67,12 +70,22 @@ export class Load extends Scene {
     }
 
     addSnowFailDown(): void {
-
+        const particlesSnow = this.add.particles(LOAD_FILE.SPIRE.SNOW.url, [1, 2, 3, 4, 5])
+        particlesSnow.setW(this.wGame * 1.5)
+        this.backEmit = particlesSnow.createEmitter({
+            x: 0,
+            y: this.hGame,
+            scale: {min: 0.6, max: 0.2},
+            speedY: { min: 20, max: 100 },
+            gravityY: 0,
+            rotate: {min: 0, max: 40}
+        })
     }
 
     preload(): void {
         this.loadImages();
         this.loadSounds();
+        this.loadSpireSheets();
 
         // LOADING BAR
         const progressBar = this.add.graphics();
@@ -109,6 +122,7 @@ export class Load extends Scene {
 
     create(): void {
         this.addCursorCustom();
+        this.addSnowFailDown();
         this.add.image(this.wGame / 2 - 15, 120, LOAD_FILE.IMAGE.LOGO).setDisplaySize(this.wGame / 2, 250);
         this.add.image(0, 0, LOAD_FILE.IMAGE.BG_LOAD)
             .setOrigin(0)

@@ -4,7 +4,6 @@ import bgLoad from '../assets/images/bg-load.jpg'
 import cursorLight from '../assets/images/particles/cursor_light.png'
 import snow from '../assets/images/particles/snowflakes.png'
 import snowLarge from '../assets/images/particles/snowflakes_large.png'
-// import bgMusic from '../assets/sounds/'
 
 export const GAME_CONFIG = {
     WIDTH: 1024,
