@@ -18,7 +18,6 @@ export const loadFile = (scene: Scene, obj: Object, type: TypeLoad = TypeLoad.IM
             break
         case TypeLoad.SPIRE:
             Object.entries(obj).forEach(item => {
-                console.log(item)
                 scene.load.spritesheet(item[1].url, item[1].url, {
                     frameWidth: item[1].w,
                     frameHeight: item[1].h

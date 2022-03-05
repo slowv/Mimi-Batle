@@ -2,8 +2,9 @@ import bg from '../assets/images/bg.png'
 import logoDark from '../assets/images/logo_dark.png'
 import bgLoad from '../assets/images/bg-load.jpg'
 import cursorLight from '../assets/images/particles/cursor_light.png'
-import snow from '../assets/images/particles/snowflakes.png'
+import snow from '../assets/images/particles/snowflakess.png'
 import snowLarge from '../assets/images/particles/snowflakes_large.png'
+import music from '../assets/sounds/bg-music.mp3'
 
 export const GAME_CONFIG = {
     WIDTH: 1024,
@@ -24,7 +25,7 @@ export const LOAD_FILE = {
         CURSOR_LIGHT: cursorLight
     },
     SOUND: {
-        BG_MUSIC: '../assets/sounds/bg-music.mp3'
+        BG_MUSIC: music
     },
     SPIRE: {
         SNOW: {

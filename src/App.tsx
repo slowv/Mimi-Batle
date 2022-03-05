@@ -36,7 +36,6 @@ export const game: Game = new Game({
     version: GAME_CONFIG.VERSION,
     audio: {
         disableWebAudio: true,
-        noAudio: false,
     },
     scene: SCENE
 });

@@ -1,4 +1,4 @@
-import {Scene} from "phaser";
+import {BlendModes, Geom, Scene} from "phaser";
 import {LOAD_FILE, SCENE_KEY} from "../utils/Constant";
 import {loadFile, TypeLoad} from "../utils/FileLoaderUtil";
 import cursor from "../assets/images/Cursor/cursor_06.png";
@@ -70,15 +70,25 @@ export class Load extends Scene {
     }
 
     addSnowFailDown(): void {
-        const particlesSnow = this.add.particles(LOAD_FILE.SPIRE.SNOW.url, [1, 2, 3, 4, 5])
-        particlesSnow.setW(this.wGame * 1.5)
-        this.backEmit = particlesSnow.createEmitter({
+        const particlesSnow = this.add.particles(LOAD_FILE.SPIRE.SNOW.url)
+        particlesSnow.createEmitter({
             x: 0,
-            y: this.hGame,
-            scale: {min: 0.6, max: 0.2},
-            speedY: { min: 20, max: 100 },
-            gravityY: 0,
-            rotate: {min: 0, max: 40}
+            y: -10,
+            emitZone: {
+                source: new Geom.Rectangle(0, 0, this.wGame, 100),
+                type: 'random',
+                quantity: 10
+            },
+            speedY: {min: 30, max: 200},
+            speedX: {min: -20, max: 50},
+            accelerationY: {random: [10, 15]},
+            scale: {random: [0.2, 0.4]},
+            alpha: {random: [0.1, 0.6]},
+            gravityY: 5,
+            frequency: 10,
+            blendMode: BlendModes.ADD,
+            rotate: {min: 0, max: 40},
+            lifespan: {min: 3000, max: 5000},
         })
     }
 
@@ -115,7 +125,6 @@ export class Load extends Scene {
         });
         this.load.on('fileprogress', (file: Phaser.Loader.File) => {
             const value = file.key.split('/');
-            console.log(file.key)
             assetText.setText('Loading asset: ' + value[value.length - 1]);
         });
     }
@@ -129,5 +138,8 @@ export class Load extends Scene {
             .setDisplaySize(this.wGame, this.hGame)
             .setAlpha(.8)
             .setDepth(-1);
+        const music = this.sound.add(LOAD_FILE.SOUND.BG_MUSIC)
+        music.play()
+
     }
 }
