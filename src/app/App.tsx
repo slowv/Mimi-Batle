@@ -1,6 +1,6 @@
 import React from 'react';
 import Phaser, {Game, Scene} from "phaser";
-import {GAME_CONFIG} from "./utils/Constant";
+import {GAME_CONFIG} from "./common/utils/Constant";
 import './App.scss';
 import {Load} from "./scene/Load";
 import {Menu} from "./scene/Menu";
@@ -13,6 +13,8 @@ const SCENE: typeof Scene[] = [
 export const game: Game = new Game({
   type: Phaser.WEBGL,
   parent: 'game-root',
+  customEnvironment : true,
+  clearBeforeRender: false,
   dom: {
     createContainer: true
   },
@@ -32,7 +34,8 @@ export const game: Game = new Game({
   fps: {
     min: 30,
     deltaHistory: 60,
-    forceSetTimeOut: true
+    forceSetTimeOut: true,
+    target: 60
   },
   version: GAME_CONFIG.VERSION,
   audio: {

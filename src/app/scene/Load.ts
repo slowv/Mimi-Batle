@@ -1,11 +1,12 @@
 import {BlendModes, Geom, Scene} from "phaser";
-import {GAME_CONFIG, LOAD_FILE, SCENE_KEY} from "../utils/Constant";
-import {loadFile, TypeLoad} from "../utils/FileLoaderUtil";
+import {GAME_CONFIG, LOAD_FILE, SCENE_KEY} from "../common/utils/Constant";
+import {loadFile, TypeLoad} from "../common/utils/FileLoaderUtil";
 import cursor from "../assets/images/cursor/cursor_06.png";
 import ParticleEmitterManager = Phaser.GameObjects.Particles.ParticleEmitterManager;
 import ParticleEmitter = Phaser.GameObjects.Particles.ParticleEmitter;
 import {TextHud} from "../entity/TextHud";
-import {getFps, getPing} from "../utils/GameUtil";
+import {getFps, getPing} from "../common/utils/GameUtil";
+import {textBaseStyle} from "../common/constant";
 
 export class Load extends Scene {
   wGame: number = 0;
@@ -18,7 +19,6 @@ export class Load extends Scene {
   particles!: ParticleEmitterManager;
   emitter!: ParticleEmitter;
   mouse!: Phaser.Input.Pointer;
-  backEmit!: ParticleEmitter;
   textFPS!: TextHud;
 
   constructor() {
@@ -34,6 +34,7 @@ export class Load extends Scene {
     this.hBox = 10;
     this.xBox = 0;
     this.yBox = this.hGame - this.hBox
+    console.log("init")
   }
 
   private async loadImages(): Promise<void> {
@@ -124,12 +125,7 @@ export class Load extends Scene {
       x: 3,
       y: this.hGame - 25,
       text: '',
-      style: {
-        fontStyle: 'italic',
-        fontFamily: 'monospace',
-        fontSize: '12px',
-        color: '#d5d5d5',
-      }
+      style: textBaseStyle
     });
     this.load.on('fileprogress', (file: Phaser.Loader.File) => {
       console.log(file)
@@ -140,12 +136,7 @@ export class Load extends Scene {
       x: 3,
       y: this.hGame - 25,
       text: `Client version: ${GAME_CONFIG.VERSION}`,
-      style: {
-        fontStyle: 'italic',
-        fontFamily: 'monospace',
-        fontSize: '12px',
-        color: '#d5d5d5',
-      }
+      style: textBaseStyle
     });
     version.setX(this.wGame - (version.width + 3))
 
