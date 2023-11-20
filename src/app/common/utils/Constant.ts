@@ -24,64 +24,71 @@ import cursor56 from '../../assets/images/cursor/cursor_56.png';
 import cursor59 from '../../assets/images/cursor/cursor_59.png';
 import cursor70 from '../../assets/images/cursor/cursor_70.png';
 import cursor72 from '../../assets/images/cursor/cursor_72.png';
+import character_blue_girl from '../../assets/images/character/blue_girl/character.png';
 // HUD
 import ScoreboardAtlas from '../../assets/hud/scoreboard/ScoreboardAtlas_03.png';
 import trackBarEXP from '../../assets/hud/clarity/trackBarEXP.png';
 
 export const GAME_CONFIG = {
-  WIDTH: 1024,
-  HEIGHT: 576,
-  VERSION: '1.01'
+    WIDTH: 1024,
+    HEIGHT: 576,
+    VERSION: '1.01'
 }
 
 export const SCENE_KEY = {
-  LOAD: 'LOAD',
-  MENU: 'MENU'
+    LOAD: 'LOAD',
+    MENU: 'MENU',
+    MAIN: 'MAIN'
 }
 
 export const LOAD_FILE = {
-  IMAGE: {
-    LOGO: logoDark,
-    BG_LOAD: bgLoad,
-    CURSOR_LIGHT: cursorLight,
-    CURSOR_03: cursor03,
-    CURSOR_06: cursor06,
-    CURSOR_11: cursor11,
-    CURSOR_14: cursor14,
-    CURSOR_16: cursor16,
-    CURSOR_19: cursor19,
-    CURSOR_21: cursor21,
-    CURSOR_26: cursor26,
-    CURSOR_29: cursor29,
-    CURSOR_40: cursor40,
-    CURSOR_42: cursor42,
-    CURSOR_45: cursor45,
-    CURSOR_48: cursor48,
-    CURSOR_51: cursor51,
-    CURSOR_53: cursor53,
-    CURSOR_56: cursor56,
-    CURSOR_59: cursor59,
-    CURSOR_70: cursor70,
-    CURSOR_72: cursor72,
-    SCOREBOARD: ScoreboardAtlas,
-    TRACK_BAR_EXP: trackBarEXP,
-  },
-  SOUND: {
-    BG_MUSIC: music
-  },
-  SPIRE: {
-    SNOW: {
-      url: snow,
-      w: 17,
-      h: 17
+    IMAGE: {
+        LOGO: logoDark,
+        BG_LOAD: bgLoad,
+        CURSOR_LIGHT: cursorLight,
+        CURSOR_03: cursor03,
+        CURSOR_06: cursor06,
+        CURSOR_11: cursor11,
+        CURSOR_14: cursor14,
+        CURSOR_16: cursor16,
+        CURSOR_19: cursor19,
+        CURSOR_21: cursor21,
+        CURSOR_26: cursor26,
+        CURSOR_29: cursor29,
+        CURSOR_40: cursor40,
+        CURSOR_42: cursor42,
+        CURSOR_45: cursor45,
+        CURSOR_48: cursor48,
+        CURSOR_51: cursor51,
+        CURSOR_53: cursor53,
+        CURSOR_56: cursor56,
+        CURSOR_59: cursor59,
+        CURSOR_70: cursor70,
+        CURSOR_72: cursor72,
+        SCOREBOARD: ScoreboardAtlas,
+        TRACK_BAR_EXP: trackBarEXP,
     },
-    SNOW_LARGE: {
-      url: snowLarge,
-      w: 64,
-      h: 64
+    SOUND: {
+        BG_MUSIC: music
+    },
+    SPIRE: {
+        SNOW: {
+            url: snow,
+            w: 17,
+            h: 17
+        },
+        SNOW_LARGE: {
+            url: snowLarge,
+            w: 64,
+            h: 64
+        },
+        CHARACTER_BLUE_GIRL: {
+            url: character_blue_girl,
+            w: 180,
+            h: 180,
+        }
+    },
+    MEDIA: {
+        BG_MENU: video_bg_menu
     }
-  },
-  MEDIA: {
-    BG_MENU: video_bg_menu
-  }
 }

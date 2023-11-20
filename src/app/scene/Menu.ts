@@ -1,10 +1,10 @@
-import {Scene} from "phaser";
 import {SCENE_KEY} from "../common/utils/Constant";
+import {BaseScene} from "./BaseScene";
 
-export class Menu extends Scene {
-  constructor() {
-    super({
-      key: SCENE_KEY.MENU
-    });
-  }
+export class Menu extends BaseScene {
+    constructor() {
+        super({
+            key: SCENE_KEY.MENU
+        });
+    }
 }
