@@ -4,8 +4,10 @@ import {IAnimator} from "./IAnimator";
 import {LOAD_FILE} from "../common/utils/Constant";
 import {getConfigAnims} from "../common/utils/GameUtil";
 import {IActionKey} from "./IActionKey";
+import {ISkill} from "./ISkill";
+import {SkillEntity} from "./SkillEntity";
 
-export class Character extends PhysicAction implements IProperties, IAnimator {
+export class CharacterEntity extends PhysicAction implements IProperties, IAnimator {
     armor: number = 10;
     attackDistance: number = 200;
     attackSpeed: number = 0.3;
@@ -23,6 +25,7 @@ export class Character extends PhysicAction implements IProperties, IAnimator {
     reloadSkill: number = 10;
     speed: number = 10;
     championName;
+    activeSkill = true;
 
     constructor(scene: Phaser.Scene, x: number, y: number, texture: string, name: string, key?: string, frame?: string | number) {
         super(scene, x, y, texture, frame);
@@ -53,12 +56,14 @@ export class Character extends PhysicAction implements IProperties, IAnimator {
     update(time: number, delta: number) {
         super.update(time, delta);
         this.move(delta);
-        this.attack();
     }
 
     protected attack(): void {
-        if (this.keys.attack.isDown) {
-            console.log("Attack");
+        if (this.keys.attack.isDown && this.activeSkill) {
+            this.activeSkill = false;
+            let {x, y} = this.scene.input.mousePointer;
+            new SkillEntity(this.scene, 300, 300, LOAD_FILE.SPIRE.BLUE_GIRL_SKILL.url, "Blue girl skill ")
+                .use({x, y}, () => this.activeSkill = true);
         }
     }
 
@@ -66,6 +71,7 @@ export class Character extends PhysicAction implements IProperties, IAnimator {
         this.keyDown();
         this.handlerInput(delta);
         this.keyUp();
+        this.attack();
     }
 
     private handlerInput(delta: number): void {
@@ -98,11 +104,14 @@ export class Character extends PhysicAction implements IProperties, IAnimator {
     private keyDown(): void {
         if (this.keys.left?.isDown) {
             this.isAPress = true;
-        } else if (this.keys.up?.isDown) {
+        }
+        if (this.keys.up?.isDown) {
             this.isWPress = true;
-        } else if (this.keys.right?.isDown) {
+        }
+        if (this.keys.right?.isDown) {
             this.isDPress = true;
-        } else if (this.keys.down?.isDown) {
+        }
+        if (this.keys.down?.isDown) {
             this.isSPress = true;
         }
     }

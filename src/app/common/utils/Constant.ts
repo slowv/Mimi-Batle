@@ -25,6 +25,7 @@ import cursor59 from '../../assets/images/cursor/cursor_59.png';
 import cursor70 from '../../assets/images/cursor/cursor_70.png';
 import cursor72 from '../../assets/images/cursor/cursor_72.png';
 import character_blue_girl from '../../assets/images/character/blue_girl/character.png';
+import blue_girl_skill_F from '../../assets/images/character/blue_girl/skill.png';
 // HUD
 import ScoreboardAtlas from '../../assets/hud/scoreboard/ScoreboardAtlas_03.png';
 import trackBarEXP from '../../assets/hud/clarity/trackBarEXP.png';
@@ -40,6 +41,20 @@ export const SCENE_KEY = {
     MENU: 'MENU',
     MAIN: 'MAIN'
 }
+
+const blueGirl = {
+    CHARACTER_BLUE_GIRL: {
+        url: character_blue_girl,
+        w: 180,
+        h: 180,
+    },
+    BLUE_GIRL_SKILL: {
+        url: blue_girl_skill_F,
+        w: 205.5,
+        h: 384
+    }
+}
+
 
 export const LOAD_FILE = {
     IMAGE: {
@@ -82,11 +97,7 @@ export const LOAD_FILE = {
             w: 64,
             h: 64
         },
-        CHARACTER_BLUE_GIRL: {
-            url: character_blue_girl,
-            w: 180,
-            h: 180,
-        }
+        ...blueGirl
     },
     MEDIA: {
         BG_MENU: video_bg_menu

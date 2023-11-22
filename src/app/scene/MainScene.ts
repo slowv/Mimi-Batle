@@ -1,11 +1,12 @@
 import {LOAD_FILE, SCENE_KEY} from "../common/utils/Constant";
 import {BaseScene} from "./BaseScene";
-import {Character} from "../entity/Character";
+import {CharacterEntity} from "../entity/CharacterEntity";
 import {textBaseStyle} from "../common/constant";
+import {SkillEntity} from "../entity/SkillEntity";
 
 export class MainScene extends BaseScene {
     text!: Phaser.GameObjects.Text;
-    quinn!: Character;
+    quinn!: CharacterEntity;
 
     constructor(config: Phaser.Types.Scenes.SettingsConfig) {
         super({
@@ -14,8 +15,12 @@ export class MainScene extends BaseScene {
     }
 
     create() {
-        this.quinn = new Character(this, 600, 400, LOAD_FILE.SPIRE.CHARACTER_BLUE_GIRL.url, "Quinn");
+        this.loadChampion();
         this.text = this.add.text(this.quinn.x, this.quinn.y - 10, this.quinn.championName, textBaseStyle);
+    }
+
+    loadChampion(): void {
+        this.quinn = new CharacterEntity(this, 600, 400, LOAD_FILE.SPIRE.CHARACTER_BLUE_GIRL.url, "Quinn");
     }
 
     preload() {
